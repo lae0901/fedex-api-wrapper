@@ -9,6 +9,22 @@ use FedEx\AddressValidationService\Request;
 use FedEx\AddressValidationService\ComplexType;
 use FedEx\AddressValidationService\SimpleType;
 
+$getJson  = isset($_POST["getJson"]) ? $_POST["getJson"] : 'N'; 
+if ($getJson == 'Y')
+{
+  echo 'get json:' . $getJson . '<br>' ;
+}
+else
+{
+
+  foreach ($_POST as $key => $value) {
+    echo "<p>POST " . $key . " = " . $value . "</p>";
+  }
+
+
+
+}
+
 $addressValidationRequest = new ComplexType\AddressValidationRequest();
 
 // User Credentials
@@ -36,6 +52,7 @@ $addressValidationRequest->AddressesToValidate[0]->Address->CountryCode = 'US';
 $request = new Request();
 //$request->getSoapClient()->__setLocation(Request::PRODUCTION_URL);
 $request->getSoapClient()->__setLocation(Request::TESTING_URL);
-$addressValidationReply = $request->getAddressValidationReply($addressValidationRequest);
+$addressValidationReply = $request->getAddressValidationReply($addressValidationRequest, true);
 
-var_dump($addressValidationReply);
+echo json_encode( get_object_vars($addressValidationReply));
+// var_dump($addressValidationReply);
