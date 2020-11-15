@@ -10,20 +10,6 @@ use FedEx\AddressValidationService\ComplexType;
 use FedEx\AddressValidationService\SimpleType;
 
 $getJson  = isset($_POST["getJson"]) ? $_POST["getJson"] : 'N'; 
-if ($getJson == 'Y')
-{
-  echo 'get json:' . $getJson . '<br>' ;
-}
-else
-{
-
-  foreach ($_POST as $key => $value) {
-    echo "<p>POST " . $key . " = " . $value . "</p>";
-  }
-
-
-
-}
 
 $addressValidationRequest = new ComplexType\AddressValidationRequest();
 
