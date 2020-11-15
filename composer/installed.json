@@ -1,0 +1,66 @@
+{
+    "packages": [
+        {
+            "name": "jeremy-dunn/php-fedex-api-wrapper",
+            "version": "4.0",
+            "version_normalized": "4.0.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JeremyDunn/php-fedex-api-wrapper.git",
+                "reference": "19679f3de9bced571681d3ba0a95d5a4457788af"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JeremyDunn/php-fedex-api-wrapper/zipball/19679f3de9bced571681d3ba0a95d5a4457788af",
+                "reference": "19679f3de9bced571681d3ba0a95d5a4457788af",
+                "shasum": ""
+            },
+            "require": {
+                "ext-soap": "*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "apigen/apigen": "^4.1",
+                "fzaninotto/faker": "^1.6",
+                "phpunit/phpunit": "^6.5",
+                "squizlabs/php_codesniffer": "*",
+                "symfony/console": "2.*"
+            },
+            "time": "2020-08-19T22:09:09+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "FedEx\\": "src/FedEx/",
+                    "FedEx\\Utility\\": "util/",
+                    "FedEx\\Tests\\": "tests/FedEx/Tests"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeremy Dunn",
+                    "email": "jeremy@jsdunn.info",
+                    "homepage": "http://www.jsdunn.info"
+                }
+            ],
+            "description": "API Wrapper for Fedex web services",
+            "homepage": "https://github.com/JeremyDunn/php-fedex-api-wrapper",
+            "keywords": [
+                "FedEx",
+                "shipping",
+                "soap"
+            ],
+            "support": {
+                "issues": "https://github.com/JeremyDunn/php-fedex-api-wrapper/issues",
+                "source": "https://github.com/JeremyDunn/php-fedex-api-wrapper/tree/4.0"
+            },
+            "install-path": "../jeremy-dunn/php-fedex-api-wrapper"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}
