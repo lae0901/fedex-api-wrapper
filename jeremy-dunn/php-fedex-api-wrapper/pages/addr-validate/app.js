@@ -5,6 +5,13 @@ var app = new Vue({
   data: {
     settingsName:'addr-validate-fullSettings',
     working:false,
+    addr1:'',
+    addr2:'',
+    city:'',
+    state:'',
+    zip:'',
+    response_json:'',
+    response:{}
   },
 
   mounted: function()
@@ -16,10 +23,12 @@ var app = new Vue({
   {
     async addrValidate_click( )
     {
-      const url = "../../examples/address-validation.php";
+      this.settings_store( ) ;
+      const url = "../../php/address-validation.php";
 
       const params = {
-        proc: 'repuser_Select', getJson:'Y'
+        proc: 'repuser_Select', getJson:'Y', addr1:this.addr1, addr2:this.addr2,
+        city: this.city, state:this.state, zip:this.zip
       };
       const query = object_toQueryString(params);
 
@@ -29,14 +38,40 @@ var app = new Vue({
         body: query
       });
 
-      const respText = await response.text();
-      const rows = JSON.parse(respText);
+      this.response_json = (await response.text()).trim( ) ;
+      this.response = JSON.parse(this.response_json);
     },
 
     filterSettings( )
     {
       const filterSettings = this.refs.filter.getFilterSettings();
       return filterSettings ;
+    },
+
+    responseProperties( )
+    {
+      const response_items = [] ;
+      const keys = Object.keys(this.response) ;
+      for( const key of keys )
+      {
+        const vlu = this.response[key] ;
+        const item = {key, vlu} ;
+        response_items.push(item) ;
+      }
+      return response_items ;
+    },
+
+    objectProperties( obj )
+    {
+      const propArr = [] ;
+      const keys = Object.keys(obj);
+      for( const key of keys )
+      {
+        const vlu = obj[key] ;
+        const item = {key, vlu} ;
+        propArr.push(item) ;
+      }
+      return propArr ;
     },
 
     settings_recall( )
@@ -46,15 +81,20 @@ var app = new Vue({
       {
         const fullSettings = JSON.parse(itemText) ;
         {
+          this.addr1 = fullSettings.addr1 || '' ;
+          this.addr2 = fullSettings.addr2 || '' ;
+          this.city = fullSettings.city || '' ;
+          this.state = fullSettings.state || '' ;
+          this.zip = fullSettings.zip || '' ;
         }
-        this.refs.filter.setFilterSettings( fullSettings.filterSettings ) ;
       }
     },
   
     settings_store( )
     {
-      const filterSettings = this.refs.filter.getFilterSettings( ) ;
-      const fullSettings = {filterSettings } ;
+      const filterSettings = {} ;
+      const fullSettings = {filterSettings, addr1:this.addr1, addr2:this.addr2,
+        city:this.city, state:this.state, zip:this.zip } ;
       localStorage.setItem( this.settingsName, JSON.stringify(fullSettings)) ;
     },
   

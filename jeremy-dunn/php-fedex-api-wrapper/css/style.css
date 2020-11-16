@@ -1,0 +1,86 @@
+  @media print {
+    div.control-buttons { display:none;}
+    pricelist-navbar { display:none;}
+    button { display:none;}
+    th.option-column,td.option-column { display:none;}
+    th.select-column,td.select-column { display:none;}
+  }
+
+  @media (min-width: 1400px)
+  {
+      .container{
+          max-width: 1300px;
+      }
+  }    
+  @media (min-width: 1600px)
+  {
+      .container{
+          max-width: 1500px;
+      }
+  }    
+
+  @media (min-width: 1800px)
+  {
+      .container{
+          max-width: 1700px;
+      }
+  }    
+
+
+body {
+  margin: 0;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  background-color: #3F51B5;
+  color: #fff;
+  padding:7px;
+}
+
+section.content {
+  flex: 1;
+}
+
+footer {
+  background-color: #FFC107;
+  color: #333;
+  padding:7px;
+}
+
+span.badge-link-like {
+    color:black;
+}
+
+span:hover.badge-link-like {
+    cursor:pointer;
+    color:#0056b3;
+}
+
+span.input-readonly-like {
+    background-color: #e9ecef;
+    padding:6px 12px;
+    display:block;
+    border-radius:.25rem;
+    border:1px solid #ced4da;    
+    width:100%;
+    line-height: 1.5;
+}
+
+span:hover.span-link-like {
+    cursor:pointer;
+}
+
+.ac-background-white {
+  background-color:white;
+}
+
+.ac-border-thin {
+  border-color:grey;
+  border-width:1px;
+}

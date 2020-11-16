@@ -1,9 +1,18 @@
 <?php
 
-// localhost/vendor/jeremy-dunn/php-fedex-api-wrapper/examples/address-validation.php
+// localhost/vendor/jeremy-dunn/php-fedex-api-wrapper/php/address-validation.php
 
 require_once 'credentials.php';
-require_once 'bootstrap.php';
+
+// $path = 'c:\\xampp\\php\\htdocs\\vendor\\jeremy-dunn\\php-fedex-api-wrapper\\php';
+// $path = dirname(__DIR__) ;
+$path = __DIR__ ;
+set_include_path(get_include_path() . PATH_SEPARATOR . $path);
+
+include_once "./FedEx/AddressValidationService/ComplexType/AddressValidationRequest.php";
+include_once "./FedEx/AddressValidationService/Request.php";
+
+// echo get_include_path() . '<br>' ;
 
 use FedEx\AddressValidationService\Request;
 use FedEx\AddressValidationService\ComplexType;

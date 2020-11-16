@@ -54,6 +54,7 @@ composer.phar
 # Project Specific
 nbproject
 examples/credentials.php
+php/credentials.php
 doc/
 tests/logs
 
